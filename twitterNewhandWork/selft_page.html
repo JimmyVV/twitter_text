@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/jquery.js"></script>
+	<title></title>
+	
+<style type="text/css">
+	body{
+		line-height: 15px;
+		background-color: #C0DEED;
+		height:100%;
+		margin: 0px;
+		font-family: "微软雅黑",fantasy;
+	}
+	.add_bg_color{
+		  position: absolute;		  
+		  width: 100%;
+		  height: 100%;
+	}
+	ul{
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+	}
+	.bg{
+		width: 100%;
+		height: 200%;
+		position: fixed;
+	}
+	.bg img{
+		  min-width: 50%;
+		  min-height: 50%;
+		  width: 100%;
+	}
+	.head{
+		  width: 100%;
+		  min-width:800px;
+		  height: 48px;
+		  position: fixed;
+		  z-index: 100;
+		  background-color: #FFF;
+		  box-shadow: 0px 0px 2px #060606;
+	}
+	.bird{
+		  background: url("images/allIcons_pic.png") -147px 2px no-repeat;
+		  height: 22px;
+		  position: relative;
+		  left: 50%;
+		  top: 13px;
+	}
+	.leftTitle{
+		  width: 332px;
+		  height: 49px;
+		  position: relative;
+		  top: -22px;	
+		  left: 7%;
+		  cursor: pointer;
+	}
+	.leftTitle ul{
+		display:inline-block;
+		text-align: center;
+		overflow: hidden;
+	}
+	.leftTitle li{
+	      display: inline;
+		  width: 59px;
+		  height: 48px;
+		  padding-right: 24px;
+		  float: left;
+	}
+	.font_title{
+	  color: #66757F;
+	  position: relative;
+	  top: -18px;
+	  left: 4px;
+	  font-size: 15px;
+	}
+	.center{
+		width:80px;
+		height:47px;
+	}
+	.homePage_bg,.newsMessage_bg,.privateMessage_bg,.discovery_bg{
+		display: block;
+		width: 33px;
+		height: 24px;
+		margin-top: 12px;
+	}
+	.homePage_bg:hover{
+		background:url('images/homePage_change.jpg') no-repeat;
+	}
+	.homePage_bg{
+		  background: url("images/homePage.jpg") no-repeat;		  
+	}	
+	.newsMessage_bg{
+		  background: url("images/message.jpg") no-repeat;
+	}
+	.newsMessage_bg:hover{
+		background:url('images/message_change.jpg') 2px 0px  no-repeat;
+	}
+	.privateMessage_bg{
+		  background: url("images/privateMessage.jpg") no-repeat;
+	}
+	.privateMessage_bg:hover{
+		background:url('images/privateMessage_change.jpg') no-repeat;
+	}
+	.discovery_bg{
+		  background: url("images/discovery.jpg") no-repeat;
+	}
+	.discovery_bg:hover{
+
+	}
+	.prompt_bottom{
+		width:100%;
+		height:5px;
+		background-color:#0084B4;
+		padding-right:24px;
+		position: relative;
+		top: -16px;
+		left: -9px;
+	}
+	.rightTitle{
+			position: absolute;
+		    left: 894px;
+		    height: 32px;
+		    width: 32px;
+		    top: 5px;
+		    left: 68%;
+	}		
+	.search:focus{		
+		background-color: #FFFFFF;
+   	    color: #000;      
+   	    -webkit-transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+   	    transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+   	    }
+	.search{
+	width: 221px;
+    height: 32px;
+    background-color: #F5F8FA;
+    border: 1px solid #F5F8FA;
+    border-radius: 19px;
+    padding-left: 16px;
+    color: #8899A6;
+    font-size: 13px;
+    outline: none;
+    -webkit-transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+    transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+	}
+	.self_message{
+		width:23px;
+		height:23px;
+		background:url("images/self_message.png");
+		float:left;
+	}
+	.head_right_title{
+		  width: 221px;
+		  position: absolute;
+		  top: 0px;
+		  left: 259px;
+	}
+	.head_right_title li{
+		float:left;
+		margin-right:23px;
+	}
+	.self_account img{
+		width:32px;
+		height:32px;
+		border:1px solid #0084B4;
+		border-radius: 4px;
+		cursor: pointer;
+	}	
+	.twitter a{
+		display: block;
+		position: relative;
+		top:10px;
+		left:32px;
+		text-decoration: none;
+		color:#FFF;				
+	}
+	.twitter:hover{
+		background-color: #17789D;
+		-webkit-transition:background-color 0.2s ease-in-out;
+		transition:background-color 0.2s ease-in-out;
+	}
+	.twitter{
+		width:81px;
+		height:32px;
+		background-color:#0084B4;
+		border:1px solid #0084B4;
+		border-radius: 4px;
+		cursor: pointer;
+		-webkit-transition:background-color 0.2s ease-in-out;
+		transition:background-color 0.2s ease-in-out;	
+	}
+	.self_introductory{
+		position: relative;
+		left: 173px;
+  		top: -8px;
+  		display: none;
+	}
+	.self_introductory_2{
+		  position: absolute;
+		  left: 196px;
+		  z-index: 4;
+		  top: 82px;
+		  display: none;
+	}
+	.self_introductory ul,.self_introductory_2 ul{
+		  width: 127px;
+		  height: auto;
+		  background-color: #FFF;
+		  padding: 2px 0px;
+		  border: 1px solid #F3F3F3;
+		  border-radius: 5px;
+		  box-shadow: -1px 0px 1px #DADADA;
+	}
+	.self_introductory ul li,.self_introductory_2 ul li{
+			width:100%;		
+	}
+		
+	.self_message_lists,.self_message_lists_2{
+		color:#66757f;
+		padding-top:5px;
+		padding-bottom: 5px;
+		font-size:14px;	
+	}
+	
+	.self_message_lists p,.self_message_lists_2 p{
+		width:118px;
+		cursor: pointer;
+		padding-left:10px;
+		line-height:26px;
+		margin:0px;
+	}
+	.self_message_lists p:hover,.self_message_lists_2 p:hover{
+		background-color: #0084B4;
+		color:#FFF;
+	}
+	.self_message_lists_divided_line{
+		border-bottom: 1px solid #e1e8ed;
+	}
+	.search_Icon{
+	  width: 15px;
+	  height: 15px;
+	  position: relative;
+	  top: -25px;
+	  left: 212px;
+	  cursor: pointer;
+	}
+	.sendTwitter{
+	  width: 23px;
+	  height: 23px;
+	  position: absolute;
+	  top: 5px;
+	  left: 61px;
+	}
+	.lists_triangle,.lists_triangle_2{
+		width: 19px;
+  		height: 10px;
+		position: relative;
+		left: 94px;
+		top:1px;
+	}
+	.content{
+	    margin: 0px 6%;
+	    padding-top: 60px;
+	    width: 88%;
+		position: absolute;
+		z-index: 2;
+		min-width: 1267px;
+	}
+	.content_right{
+		width:290px;
+		height:476px;
+		float:left;
+		margin-right: 10px;
+	}
+	.content_right li{
+		margin-bottom:12px;
+
+	}
+	.content_right_up{
+		width:100%;
+		height:96px;
+		background-color: #0084B4;
+		border: 1px solid #0084B4;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+	.content_right_down{
+		width:100%;
+		height:96px;
+		border:1px solid #E1E8ED;
+		background-color: #FFF;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+	.add_Portrait{
+	  position: absolute;
+	  background-color: #FFF;
+	  border: 3px solid #FFF;
+	  border-radius: 9px;
+	  top: 126px;
+	  left: 12px;
+	}	
+	.add_Portrait_pic:hover{
+	  border:3px solid #99CDE1;		
+	  padding: 16px 12px;
+	}
+	.add_Portrait_pic{
+	  display: block;
+	  background-color: #0084B4;
+	  width: 37px;
+	  height: 29px;
+	  padding: 19px 15px;
+	  border-radius: 9px;	
+	}
+	.account_individual{
+		  line-height: 16px;
+		  position: relative;
+		  top: 7px;
+ 		  left: 89px;
+	}
+	.account_individual a{
+		text-decoration: none;
+  		display: block;
+  		color: #000;
+	}
+	.account_individual a:hover,.others_twitter_messages_content a:hover{
+		text-decoration: underline;
+	}
+	.account_individual .account{
+		font-size:18px;		
+		font-weight: bold;
+	}
+	.account_individual .at{
+		font-size: 12px;
+		color:#7D86B7;
+	}
+	.account_detail{
+	  width: 292px;
+	  position: relative;
+	  top: 15px;
+	  left: 13px;
+	}
+	.account_detail li{
+		float:left;
+		width:33.3%;
+		line-height: 20px;
+	}
+	.account_detail_1{
+		color:#8c9ca9;
+		display: block;
+	}
+	.account_detail_2{
+		color:#0084B4;
+		font-size: 18px;
+		font-weight:700;
+	}
+	.content_right_bottom{
+	    width: 90%;
+		border: 1px solid #E1E8ED;
+		border-radius: 9px;
+		padding: 5%;
+		background-color: #FFF;		
+	}
+	.content_right_bottom a{
+		color:#0084B4;
+		font-size: 15px;
+		text-decoration: none;
+	}
+	.content_right_bottom a:hover{
+		text-decoration: underline;
+	}
+	.content_right_bottom_trend{
+		color:#CACFD3;
+		font-size:22px;
+	}
+	.content_middle{
+	  width: 588px;
+	  float: left;
+	  background-color: #FFF;
+	  margin-bottom: 10px;
+	  border-radius: 9px;
+	}
+	.content_middle_search{
+		background-color: #E5F2F7;
+		padding:10px;
+		border-top-left-radius: 9px;
+		border-top-right-radius: 9px;
+	}
+	.content_middle_search_Icon{
+		width: 32px;
+  		height: 32px;
+  		border-radius:4px;
+	}
+	.content_middle_search_form{
+		margin-left:20px;
+	}	
+	.content_middle_search_form_1{
+		position: relative;
+		top: -32px;
+  	 	left: 40px;
+  	 	float:left;
+  	 	z-index: 2;
+	}
+	#addPic,.content_middle_search_Icon_camera{
+		  width: 24px;
+  		  height: 18px;
+	}
+	#addPic{
+		vertical-align: middle;
+		margin-right:8px;
+	}
+	.content_middle_search_Icon_camera{		 
+  		  position: relative;
+  		  left:-36px;
+  		  top: 3px;
+  	}
+  	.content_middle_search_form_text{
+  		width:498px;
+  		height:24px;
+  		border:1px solid #BFE0EC;
+  		border-radius: 4px;
+  		padding:4px;
+  		outline: none;
+  	}
+  	.content_middle_search_form_2{
+  		position: relative;
+		top: -32px;
+  	 	left: 40px;
+  	 	display: none;
+  	}
+  	.content_middle_search_form_textarea{
+  		border:1px solid #BFE0EC;
+  		border-radius: 4px;
+  		padding:8px;
+  		width:483px;
+  		height:81px;
+  		font-size:16px;
+  		resize:none;
+  		outline: none;
+  	}
+  	.content_middle_search_form_additional{
+  		margin-top: 10px;
+  		width:501px;
+  		overflow: auto;
+  		margin-bottom: 10px;
+  	}  	
+
+  	#addtional_fn li{
+  		float:left;
+  		line-height: 39px;
+  		font-size: 14px;
+  		color:#0084B4;
+  		padding: 2px;
+  		margin-right: 15px;
+  	}
+  	.active_bt{
+  		border:1px solid #E5F2F7;
+  		border-radius: 4px;
+  		cursor: pointer;
+  	}
+  	.active_bt:hover{
+  		border:1px solid #44C0ED;
+  		border-radius: 4px;
+  	}
+  	.prohibition_bt{
+  		color:#87C4DB;
+  	}
+  	.prohibition{
+  	    width: 12px;
+  		height: 20px;
+  		margin-right:5px;
+  		vertical-align: middle;
+  	}
+  	.send_bt_search{
+  		position: relative;
+  	}
+  	.send_bt_search_textarea_2{
+  		padding: 10px 12px;
+  		background-color:#0084B4; 
+  		position: absolute;  
+  		top: 8px;
+  		left: 413px;	
+  		border-radius: 6px;	
+  		cursor: pointer;
+  		-webkit-transition: background-color 0.2s ease-in-out;
+  		transition: background-color 0.2s ease-in-out;
+  	}
+  	.send_bt_search_textarea_2:hover{
+  		background-color: #02668B;
+  		-webkit-transition: background-color 0.2s ease-in-out;
+  		transition: background-color 0.2s ease-in-out;
+  	}
+  	.send_bt_search_textarea{
+  		padding: 10px 12px;
+  		background-color:#87C4DB; 
+  		position: absolute;  
+  		top: 8px;
+  		left: 413px;	
+  		border-radius: 6px;	
+  	}
+  	.send_bt_search_textarea_a{
+  		color:#FFF;
+  		text-decoration: none;
+	  	padding-left: 19px;
+  	}
+  	.sendTwitter_2{
+  		  width: 23px;
+		  height: 23px;
+		  position: absolute;
+		  top: 6px;
+		  left: 6px;
+  	}
+  	.num_letter{
+  	  position: relative;
+	  top: 19px;
+	  color: rgb(136, 153, 168);
+	  left: 170px;
+  	}  	  	
+  	
+  	.others_twitter_messages{
+  	      background-color: #FFF;
+		  border-bottom-left-radius: 9px;
+		  border-bottom-right-radius: 9px;
+		  overflow: auto;
+		  width: 100%;
+		  position: relative;
+		  top: 0px;
+  	}
+  	.others_twitter_messages>li{
+		  	  cursor: pointer;
+			  padding: 2.5%;
+			  /* background-color: #FFF; */
+			  position: relative;
+			  overflow: auto;
+			  width: 95%;
+			  /* border-bottom: 1px solid #e1e8ed; */
+			  padding-bottom: 0px;
+  	}
+  	.others_twitter_messages_img{
+  		width:52px;
+  		height:52px;
+  		border-radius: 5px;
+  		display: block;
+  		float:left;
+  		padding: 0px 15px;
+  	}
+  	.others_twitter_messages_content{
+  		 float:left;
+  		 width: 488px;
+  		 cursor:pointer;
+  	}
+  	.others_twitter_messages_content a{
+  		font-size:18px;
+  		color:#000;
+  		font-weight: bold;
+  		text-decoration: none;
+  	}
+  	.others_twitter_messages_content span{
+  		font-size:14px;
+  		color:#BCABA9;
+  		margin-left: 6px;
+  	}
+  	.others_twitter_messages_content p{
+  		font-size:14px;
+  		color:#573533;
+  		margin:5px 0px;
+  		line-height: 16px;
+  	}
+  	.revert,.repost,.collection,.more,.more_1{
+  		background-color: #ccd6dd;
+  	}  	
+  	.revert:hover,.more_1:hover,.more:hover{
+  		background-color:#0084B4;
+  	}
+  	.repost:hover{
+  		background-color:#5c913B;	
+  	}  	
+  	.collection:hover{
+  		background-color:#ffac33;		
+  	}
+  	.revert{
+	  	width: 40px;
+	 	height: 33px;
+  	}
+  	.repost{
+  		width: 31px;
+  		height: 32px;
+  	}
+  	.collection{
+  	    width: 29px;
+  		height: 34px;
+  	}
+  	.more,.more_1{
+  		width: 42px;
+  		height: 36px;
+  	}
+  	.others_twitter_messages_content_bt li{
+  		float:left;
+  		width:65px;  		
+  		padding: 5px 0px;
+  		cursor:pointer;
+  	}
+  	.others_twitter_messages_line{
+  		border-top: 1px solid #e1e8ed; 
+  		padding:0px;
+  	}
+  	.content_right_2{
+  		 float: left;
+  		 margin-left: 10px;
+  	}
+  	.content_right_2_up,.content_right_2_down{		  
+		  background-color: #FFF;
+		  border-radius: 9px;
+		  box-shadow: 1px 0px 1px #FFF;
+		  padding: 16px;
+		  width: 240px;
+  	}
+  	.content_right_2_up{ 	 	 
+		  height: 271px; 		
+  	} 
+  	.content_right_2_down{
+  		margin-top: 10px;
+  		overflow: auto;
+  	}
+  	.content_right_2_up_part_1 span{
+  			color:#66757f;
+  			font-size:18px;
+  	}
+  	.content_right_2_up_part_1 a{
+  			color: #2b7bb9;
+  			text-decoration: none;
+  			font-size:14px;
+  	}
+  	.content_right_2_up_part_1 a:hover,.content_right_2_down li:hover{
+  			text-decoration: underline;  			
+  	}
+  	.content_parts{
+  		margin:8px 0px;
+  	}
+  	.content_parts_img{
+  		  border-radius: 8px;
+  		  float: left;
+  	}
+  	.add_info_parts{
+          width: 166px;
+		  float: left;
+		  line-height: 14px;
+		  padding-left: 4px;
+		  cursor: pointer;
+  	}
+  	.add_info_parts a{  		
+  		color:#000;
+  		text-decoration: none;
+  		font-size:13px;
+  	}
+  	.add_info_parts span{
+  	  color:#8899a6;
+ 	  font-size: 14px;
+  	}
+  	.add_info_parts a:hover,.function_anchor a:hover{
+  		text-decoration: underline;
+  		color:#0084B4;
+  	}
+  	.add_info_parts img{
+  		width:15px;
+  		height:15px;
+  		margin:0px 4px;
+  		vertical-align: middle;
+  	}
+  	.attention img{
+  		width: 22px;
+  		margin-right: 7px;
+  	}
+  	.attention span{
+  		color:#000;
+  	}
+  	.attention{
+  		margin-top: 4px;
+  		width:73px;
+  		line-height:29px;
+  		border:1px solid #E1E8ED;
+  		border-radius: 6px;
+  		background-color: #FCFDFD;
+  	    box-shadow: 1px 1px 1px #E1E8ED;
+  	}
+  	.attention:hover{
+  		background-color: #E9F1F5;
+  	}
+  	.content_right_2_up_part_2{
+  		margin-top: 3px;
+  		overflow: auto;
+  		position: relative;
+  	}
+  	.function_anchor{
+  		line-height: 40px;
+  	}
+  	.function_anchor span{
+  		color:#0084B4;
+  	} 
+  	.function_anchor a{
+  		color:#0084B4;
+  		text-decoration: none;
+  		font-size:14px;
+  	}	
+  	.content_right_2_down li{
+  		float:left;
+  		margin-left:4px;
+  		line-height: 18px;
+  		color:#8899a6;
+  		font-size:14px;
+  		cursor: pointer;
+  	}
+  	.reference{
+  		position: relative;
+  	}
+  	.error{
+  		position:absolute;
+  		left: 220px;
+  		cursor: pointer;
+  	}
+  	.addImg{
+  		position: fixed;
+ 		top: 20px;
+  	}
+</style>
+</head>
+<body>
+<div class="add_bg_color">
+<div class="head">
+	<div class="bird"></div>
+	<div class="leftTitle">
+	<ul>
+		<li class="homePage">
+			<div class="center">
+				<span class="homePage_bg"></span><span class="font_title">主页</span>				
+			</div>
+			<div class="prompt_bottom"></div>
+		</li>
+		<li class="newsMessage">
+			<div class="center">
+				<span class="newsMessage_bg"></span><span class="font_title">通知</span>
+			</div>
+			<div class="prompt_bottom"></div>
+		</li>
+		<li class="privateMessage">
+			<div class="center">
+				<span class="privateMessage_bg"></span><span class="font_title">私信</span>
+			</div>
+			<div class="prompt_bottom"></div>
+		</li>
+		<li class="discovery">
+			<div class="center">
+				<span class="discovery_bg"></span><span class="font_title">发现</span>
+			</div>
+			<div class="prompt_bottom">				
+			</div>
+		</li>
+	</ul>
+	</div>
+	<div class="rightTitle">
+		<form>
+				<input type="text" class="search" placeholder="搜索 Twitter"/>
+				<span><img src="images/searchTwitter.PNG" class="search_Icon"></span>	
+		</form>		
+		<ul class="head_right_title">
+			<li class="self_account"><img src="images/self_message.png" title="个人资料与账号"></li>
+			<li class="twitter"><span><img class="sendTwitter" src="images/search.PNG"></span><a href="#">发推</a></li>
+
+		</ul>
+		<div class="self_introductory">
+		<span><img class="lists_triangle" src="images/triangle.PNG"></span>
+			<ul>
+				<li class="self_message_lists_2">
+					<p>XXXabv</p>
+					<p>个人资料</p>
+				</li>
+				<li class="self_message_lists_divided_line_2"></li>
+				<li class="self_message_lists_2">
+					<p>列表</p>
+				</li>
+				<li class="self_message_lists_divided_line_2"></li>
+				<li class="self_message_lists_2">
+					<p>帮助</p>
+					<p>键盘快捷键</p>
+				</li>
+				<li class="self_message_lists_divided_line_2"></li>
+				<li class="self_message_lists_2">
+					<p>设置</p>
+					<p>Log out</p>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="addImg"><img src="images/windpage_self.png"></div>
+</div>
+	<div class="content">
+		<div class="content_right">
+			<ul>
+				<li>
+					<div class="content_right_up">
+						
+					</div>
+					<div class="add_Portrait">
+						<a href="#" title="添加头像"><img src="images/camera.png" class="add_Portrait_pic"></a>
+					</div>
+					<div class="content_right_down">
+						<div class="account_individual">
+						<a href="#" class="account">Jimmy0223</a>
+						<a href="#" class="at">@jimmy0223</a>
+					</div>
+					<ul class="account_detail">
+						<li>
+							<span class="account_detail_1">推文</span>
+							<span class="account_detail_2">0</span>
+						</li>
+						<li>
+							<span class="account_detail_1">正在关注</span>
+							<span class="account_detail_2">66</span>
+						</li>
+						<li>
+							<span class="account_detail_1">关注者</span>
+							<span class="account_detail_2">1</span>
+						</li>
+					</ul>
+					</div>
+				</li>
+				<li>
+					<div class="content_right_bottom">
+							<p><span class="content_right_bottom_trend">趋势·</span><a href="#">更改</a></p>
+						<ul>					
+							<li><a href="#">what does fox say</a></li>
+							<li><a href="#">Maroon 5</a></li>
+							<li><a href="#">Taylor Swift</a></li>
+							<li><a href="#">Justin Bibber</a></li>
+							<li><a href="#">Jennis</a></li>
+							<li><a href="#">Go to jail</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			
+			</div>
+		<div class="content_middle">
+			<div class="content_middle_search">
+				<div class="content_middle_search_form">
+					<img src="images/self_message.png" class="content_middle_search_Icon">
+					<form class="content_middle_search_form_1">
+						<input type="text" placeholder="有神马新鲜事？" class="content_middle_search_form_text">
+						<img src="images/blurCamera.png" class="content_middle_search_Icon_camera">
+					</form>
+					<form class="content_middle_search_form_2">
+						<textarea class="content_middle_search_form_textarea" maxlength="140"></textarea>
+						<div class="content_middle_search_form_additional">
+							<ul id="addtional_fn">
+								<li class="active_bt"><img src="images/blurCamera.png" id="addPic">添加照片</li>
+								<li class="prohibition_bt"><img src="images/location.png" class="prohibition">禁用位置</li>
+							</ul>
+							<div class="send_bt_search">
+								<span class="num_letter">140</span>
+								<div class="send_bt_search_textarea">
+									<span><img class="sendTwitter_2" src="images/search.PNG"></span><a class="send_bt_search_textarea_a" href="#">发推</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<ul class="others_twitter_messages">	
+			  <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+				<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+				<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+				<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+				<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+					<li class="others_twitter_messages_line"></li>
+				 <div class="reference">
+					<li>
+						<img src="images/Icon_2.jpeg" class="others_twitter_messages_img" />
+						<div class="others_twitter_messages_content">
+							<a href="">frits wester</a><span>@friswester · 40分</span>
+							<p>Nog volstrekt onduidelijk of coalitie er uit gaat komenVeilig Verkeer Nederland deed onderzoek naar de kennis van ouders over</p>
+							<div class="others_twitter_messages_content_bt">
+								<ul>
+									<li><img src="images/revert.png" class="revert" title="回复" /></li>
+									<li><img src="images/repost.png" class="repost" title="转发" /></li>
+									<li><img src="images/collection.png" class="collection" title="收藏"></li>
+									<li><img src="images/more.png" class="more" title="更多"></li>
+								</ul>
+							</div>						
+						</div>	
+					</li>
+					<div class="self_introductory_2">
+								<span><img class="lists_triangle_2" src="images/triangle.PNG"></span>
+									<ul>
+										<li class="self_message_lists">
+											<p>通过私信分享</p>
+											<p>Copy link Tweet</p>
+											<p>嵌入入推文</p>
+											<p>静音</p>
+											<p>屏蔽</p>
+											<p>报告</p>
+										</li>
+									</ul>
+					</div>
+				</div>
+			</ul>	
+		</div>
+		<div class="content_right_2">
+			<div class="content_right_2_up">
+				<div class="content_right_2_up_part_1">
+					<span>推荐关注</span><a href="#"> · 刷新</a><a href="#"> · 查看全部</a>
+				</div>
+				<div class="content_right_2_up_part_2">
+					<div class="content_parts">
+						<img src="images/portrait_1.jpg" class="content_parts_img" />
+						<div class="add_info_parts">
+							<a href="#">wouke van scherrenbu</a><img src="images/decoration.png"><span> @woukevscherrenb</span>
+							<div class="attention"><img src="images/attention.png"><span>关注</span></div>
+						</div>
+					</div>
+					<div class="error"><img src="images/error.jpg"/></div>
+				</div>
+				<div class="content_right_2_up_part_2">
+					<div class="content_parts">
+						<img src="images/portrait_2.jpg" class="content_parts_img" />
+						<div class="add_info_parts">
+							<a href="#">Barak Obama won re-election</a><img src="images/decoration.png"><span> @wccc</span>
+							<div class="attention"><img src="images/attention.png"><span>关注</span></div>
+						</div>
+					</div>
+					<div class="error"><img src="images/error.jpg"/></div>
+				</div>
+				<div class="content_right_2_up_part_2">
+					<div class="content_parts">
+						<img src="images/portrait_3.jpg" class="content_parts_img" />
+						<div class="add_info_parts">
+							<a href="#">Justin Bibber took drugs</a><img src="images/decoration.png"><span> @threat</span>
+							<div class="attention"><img src="images/attention.png"><span>关注</span></div>
+						</div>
+					</div>
+					<div class="error"><img src="images/error.jpg"/></div>
+				</div>				
+				<div class="function_anchor">
+					<span><a href="#">热门账号</a> · <a href="#">查找好友</a></span>
+				</div>
+			</div>
+			<div class="content_right_2_down">
+				<ul>
+					<li>机械原理</li>
+					<li>工程材料</li>
+					<li>模拟电路</li>
+					<li>信号与系统</li>
+					<li>毛概</li>
+					<li>马原</li>
+					<li>机械原理</li>
+					<li>工程材料</li>
+					<li>模拟电路</li>
+					<li>信号与系统</li>
+					<li>毛概</li>
+					<li>马原</li>
+					<li>机械原理</li>
+					<li>工程材料</li>
+					<li>模拟电路</li>
+					<li>信号与系统</li>
+					<li>毛概</li>
+					<li>马原</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+	$(function(){	
+		$(".prompt_bottom").hide();
+			$("ul>li").hover(function(){			
+			var $bottom_part = $(this).find(".prompt_bottom");
+			$bottom_part.show();
+			if(!$bottom_part.is(":animated"))
+			$bottom_part.animate({
+				top:"-16px"
+			},100);
+		
+		},function(){
+			$(this).find(".prompt_bottom").animate({
+				top:"-11px"
+			},100);		
+		})	
+		$(".homePage").hover(function(){
+			var $anchor = $(".homePage_bg");
+			
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".homePage_bg");
+			
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".newsMessage").hover(function(){
+			var $anchor = $(".newsMessage_bg");
+			
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".newsMessage_bg");			
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".privateMessage").hover(function(){
+			var $anchor = $(".privateMessage_bg");
+			$anchor.css({
+				
+			});
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".privateMessage_bg");
+			$anchor.css({
+				background:"url('images/privateMessage.jpg') 1px -1px no-repeat"	
+			});
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".discovery").hover(function(){
+			var $anchor = $(".discovery_bg");
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".discovery_bg");
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".self_account").toggle(function(){
+			$(".self_introductory").show();
+		},function(){
+			$(".self_introductory").hide();
+		})
+		$(".content_middle_search_form_1").click(function(){
+			$(this).hide();
+			$(".content_middle_search_form_2").show();
+			$(".content_middle_search").css({height:"152px"});
+			$(".content_middle_search_form_textarea").focus();
+		});
+		$(".content_middle_search_form_textarea").blur(function(){
+			if($(this).val().length>0);
+			else
+			{	
+				$(".content_middle_search").css({height:"auto"});
+				$(".content_middle_search_form_2").hide();
+				$(".content_middle_search_form_1").show();
+			}
+		});
+		$(".content_middle_search_form_textarea").keyup(function(){
+			var original = $(this)[0];
+			var num = $(".num_letter")[0];
+			num.innerHTML = 140-original.value.length;
+			if(original.value.length>0)
+			{
+				$(".send_bt_search").find("div").removeClass("send_bt_search_textarea").addClass("send_bt_search_textarea_2");
+			}
+			else
+			{
+				$(".send_bt_search").find("div").removeClass("send_bt_search_textarea_2").addClass("send_bt_search_textarea");
+			}
+		})	
+		$(".more").bind({
+			mouseover:function(){
+				$(this).css({
+				backgroundColor:"#0084B4"
+				})
+			},
+			mouseout:function(){
+				$(this).css({
+				backgroundColor:"#ccd6dd"	
+				})
+			}
+		});	
+		$(".more").toggle(function(){
+				$(this).css({
+					backgroundColor:"#0084B4"
+				});
+				$(this).unbind("mouseout").unbind("mouseover");
+				$(this).parents(".others_twitter_messages_content").parent().next().show();
+		},
+		function(){
+			$(this).css({
+					backgroundColor:"#ccd6dd"
+				});
+				$(this).bind({
+					mouseover:function(){
+						$(this).css({
+						backgroundColor:"#0084B4"
+						})
+					},
+					mouseout:function(){
+						$(this).css({
+						backgroundColor:"#ccd6dd"	
+						})
+					}
+				});					
+				$(this).parents(".others_twitter_messages_content").parent().next().hide();
+		})
+		$(".error").click(function(){
+			var $parent = $(this).parent();
+			var num = Math.floor(Math.random()*10)%4+1;		//获得1~4的随机
+			var replace = $parent.clone(true);
+			$(this).siblings(".content_parts").find(".content_parts_img").attr("src","images/portrait_"+num+".jpg");			
+		})
+	})
+		
+</script>
+</html>

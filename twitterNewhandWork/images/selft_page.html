@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)file:///D:/html/html/twitter_web/selft_page.html# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="./selft_page_files/jquery.js"></script>
+	<title></title>
+	
+<style type="text/css">
+	body{
+		line-height: 12px;
+		background-color: #C0DEED;
+		height:100%;
+		margin: 0px;
+		font-family: "微软雅黑",fantasy;
+	}
+	.add_bg_color{
+		  background: url("images/windpage_self.png") 0px 0px no-repeat;
+		  position: absolute;		  
+		  width: 100%;
+		  height: 100%;
+	}
+	ul{
+		list-style-type: none;
+		padding: 0px;
+		margin: 0px;
+	}
+	.bg{
+		width: 100%;
+		height: 200%;
+		position: fixed;
+	}
+	.bg img{
+		  min-width: 50%;
+		  min-height: 50%;
+		  width: 100%;
+	}
+	.head{
+		  width: 100%;
+		  min-width: 50%;
+		  height: 48px;
+		  position: fixed;
+		  z-index: 100;
+		  background-color: #FFF;
+		  box-shadow: 0px 0px 2px #060606;
+	}
+	.bird{
+		  background: url("images/allIcons_pic.png") -147px 2px no-repeat;
+		  height: 22px;
+		  position: relative;
+		  left: 50%;
+		  top: 13px;
+	}
+	.leftTitle{
+		  width: 332px;
+		  height: 49px;
+		  position: relative;
+		  top: -22px;	
+		  left: 7%;
+		  cursor: pointer;
+	}
+	.leftTitle ul{
+		display:inline-block;
+		text-align: center;
+		overflow: hidden;
+	}
+	.leftTitle li{
+	      display: inline;
+		  width: 59px;
+		  height: 48px;
+		  padding-right: 24px;
+		  float: left;
+	}
+	.font_title{
+	  color: #66757F;
+	  position: relative;
+	  top: -18px;
+	  left: 4px;
+	  font-size: 15px;
+	}
+	.center{
+		width:80px;
+		height:47px;
+	}
+	.homePage_bg,.newsMessage_bg,.privateMessage_bg,.discovery_bg{
+		display: block;
+		width: 33px;
+		height: 24px;
+		margin-top: 12px;
+	}
+	.homePage_bg:hover{
+		background:url('images/homePage_change.jpg') no-repeat;
+	}
+	.homePage_bg{
+		  background: url("images/homePage.jpg") no-repeat;		  
+	}	
+	.newsMessage_bg{
+		  background: url("images/message.jpg") no-repeat;
+	}
+	.newsMessage_bg:hover{
+		background:url('images/message_change.jpg') 2px 0px  no-repeat;
+	}
+	.privateMessage_bg{
+		  background: url("images/privateMessage.jpg") no-repeat;
+	}
+	.privateMessage_bg:hover{
+		background:url('images/privateMessage_change.jpg') no-repeat;
+	}
+	.discovery_bg{
+		  background: url("images/discovery.jpg") no-repeat;
+	}
+	.discovery_bg:hover{
+
+	}
+	.prompt_bottom{
+		width:100%;
+		height:5px;
+		background-color:#0084B4;
+		padding-right:24px;
+		position: relative;
+		top: -16px;
+		left: -9px;
+	}
+	.rightTitle{
+			position: absolute;
+		    left: 894px;
+		    height: 32px;
+		    width: 32px;
+		    top: 5px;
+		    left: 68%;
+	}		
+	.search:focus{		
+		background-color: #FFFFFF;
+   	    color: #000;      
+   	    -webkit-transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+   	    transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+   	    }
+	.search{
+	width: 221px;
+    height: 32px;
+    background-color: #F5F8FA;
+    border: 1px solid #F5F8FA;
+    border-radius: 19px;
+    padding-left: 16px;
+    color: #8899A6;
+    font-size: 13px;
+    outline: none;
+    -webkit-transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+    transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+	}
+	.self_message{
+		width:23px;
+		height:23px;
+		background:url("images/self_message.png");
+		float:left;
+	}
+	.head_right_title{
+		  width: 221px;
+		  position: absolute;
+		  top: 0px;
+		  left: 259px;
+	}
+	.head_right_title li{
+		float:left;
+		margin-right:23px;
+	}
+	.self_account img{
+		width:32px;
+		height:32px;
+		border:1px solid #0084B4;
+		border-radius: 4px;
+		cursor: pointer;
+	}	
+	.twitter a{
+		display: block;
+		position: relative;
+		top:10px;
+		left:32px;
+		text-decoration: none;
+		color:#FFF;				
+	}
+	.twitter:hover{
+		background-color: #17789D;
+		-webkit-transition:background-color 0.2s ease-in-out;
+		transition:background-color 0.2s ease-in-out;
+	}
+	.twitter{
+		width:81px;
+		height:32px;
+		background-color:#0084B4;
+		border:1px solid #0084B4;
+		border-radius: 4px;
+		cursor: pointer;
+		-webkit-transition:background-color 0.2s ease-in-out;
+		transition:background-color 0.2s ease-in-out;	
+	}
+	.self_introductory{
+		position: relative;
+		left: 173px;
+  		top: -8px;
+  		display:none;
+	}
+	.self_introductory ul{
+		  width: 127px;
+		  height: auto;
+		  background-color: #FFF;
+		  padding: 2px 0px;
+		  border: 1px solid #F3F3F3;
+		  border-radius: 5px;
+		  box-shadow: 0px 0px 3px #DADADA;
+	}
+	.self_introductory ul li{
+			width:100%;		
+	}
+		
+	.self_message_lists{
+		color:#66757f;
+		padding-top:5px;
+		padding-bottom: 5px;
+		font-size:14px;
+	}
+	
+	.self_message_lists p{
+		width:118px;
+		cursor: pointer;
+		padding-left:10px;
+		line-height:26px;
+		margin:0px;
+	}
+	.self_message_lists p:hover{
+		background-color: #0084B4;
+		color:#FFF;
+	}
+	.self_message_lists_divided_line{
+		border-bottom: 1px solid #e1e8ed;
+	}
+	.search_Icon{
+	  width: 15px;
+	  height: 15px;
+	  position: relative;
+	  top: -25px;
+	  left: 212px;
+	  cursor: pointer;
+	}
+	.sendTwitter{
+	  width: 23px;
+	  height: 23px;
+	  position: absolute;
+	  top: 5px;
+	  left: 61px;
+	}
+	.lists_triangle{
+		width: 19px;
+  		height: 10px;
+		position: relative;
+		left: 94px;
+		top:1px;
+	}
+	.content{
+		border:1px solid;
+		margin:0px 7%;	
+		padding-top:60px;	
+		width:86%;
+		position: absolute;
+		z-index: 2;
+	}
+	.content_right{
+		width:290px;
+		height:476px;
+		float:left;
+		margin-right: 10px;
+	}
+	.content_right li{
+		margin-bottom:12px;
+
+	}
+	.content_right_up{
+		width:100%;
+		height:96px;
+		background-color: #0084B4;
+		border: 1px solid #0084B4;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+	.content_right_down{
+		width:100%;
+		height:96px;
+		border:1px solid #E1E8ED;
+		background-color: #FFF;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+	.add_Portrait{
+	  position: absolute;
+	  background-color: #FFF;
+	  border: 3px solid #FFF;
+	  border-radius: 9px;
+	  top: 126px;
+	  left: 12px;
+	}	
+	.add_Portrait_pic:hover{
+	  border:3px solid #99CDE1;		
+	  padding: 16px 12px;
+	}
+	.add_Portrait_pic{
+	  display: block;
+	  background-color: #0084B4;
+	  width: 37px;
+	  height: 29px;
+	  padding: 19px 15px;
+	  border-radius: 9px;	
+	}
+	.account_individual{
+		  line-height: 16px;
+		  position: relative;
+		  top: 7px;
+ 		  left: 89px;
+	}
+	.account_individual a{
+		text-decoration: none;
+  		display: block;
+  		color: #000;
+	}
+	.account_individual a:hover{
+		text-decoration: underline;
+	}
+	.account_individual .account{
+		font-size:18px;		
+		font-weight: bold;
+	}
+	.account_individual .at{
+		font-size: 12px;
+		color:#7D86B7;
+	}
+	.account_detail{
+	  width: 292px;
+	  position: relative;
+	  top: 15px;
+	  left: 13px;
+	}
+	.account_detail li{
+		float:left;
+		width:33.3%;
+		line-height: 20px;
+	}
+	.account_detail_1{
+		color:#8c9ca9;
+		display: block;
+	}
+	.account_detail_2{
+		color:#0084B4;
+		font-size: 18px;
+		font-weight:700;
+	}
+	.content_right_bottom{
+	    width: 90%;
+		border: 1px solid #E1E8ED;
+		border-radius: 9px;
+		padding: 5%;
+		background-color: #FFF;		
+	}
+	.content_right_bottom a{
+		color:#0084B4;
+		font-size: 15px;
+		text-decoration: none;
+	}
+	.content_right_bottom a:hover{
+		text-decoration: underline;
+	}
+	.content_right_bottom_trend{
+		color:#CACFD3;
+		font-size:22px;
+	}
+	.content_middle{
+		width:588px;
+		height:240px;
+		border:1px solid;
+		float:left;
+	}
+	.content_middle_search{
+		background-color: #E5F2F7;
+		padding:10px;
+		border-top-left-radius: 9px;
+		border-top-right-radius: 9px;
+		height:155px;
+	}
+	.content_middle_search_Icon{
+		width: 32px;
+  		height: 32px;
+  		border-radius:4px;
+	}
+	.content_middle_search_form{
+		margin-left:20px;
+	}	
+	.content_middle_search_form_1{
+		position: relative;
+		top: -32px;
+  	 	left: 40px;
+	}
+	#addPic,.content_middle_search_Icon_camera{
+		  width: 24px;
+  		  height: 18px;
+	}
+	#addPic{
+		vertical-align: middle;
+		margin-right:8px;
+	}
+	.content_middle_search_Icon_camera{		 
+  		  position: relative;
+  		  left:-36px;
+  		  top: 3px;
+  	}
+  	.content_middle_search_form_text{
+  		width:498px;
+  		height:24px;
+  		border:1px solid #BFE0EC;
+  		border-radius: 4px;
+  		padding:4px;
+  	}
+  	.content_middle_search_form_2{
+  		position: relative;
+		top: -32px;
+  	 	left: 40px;
+  	 	display: none;
+  	}
+  	.content_middle_search_form_textarea{
+  		border:1px solid #BFE0EC;
+  		border-radius: 4px;
+  		padding:8px;
+  		width:483px;
+  		height:81px;
+  		font-size:16px;
+  		resize:none;
+  	}
+  	.content_middle_search_form_additional{
+  		margin-top: 10px;
+  		width:501px;
+  		overflow: auto;
+  		margin-bottom: 10px;
+  	}  	
+
+  	#addtional_fn li{
+  		float:left;
+  		line-height: 39px;
+  		font-size: 14px;
+  		color:#0084B4;
+  		padding: 2px;
+  		margin-right: 15px;
+  	}
+  	.active_bt{
+  		border:1px solid #E5F2F7;
+  		border-radius: 4px;
+  		cursor: pointer;
+  	}
+  	.active_bt:hover{
+  		border:1px solid #44C0ED;
+  		border-radius: 4px;
+  	}
+  	.prohibition_bt{
+  		color:#87C4DB;
+  	}
+  	.prohibition{
+  	    width: 12px;
+  		height: 20px;
+  		margin-right:5px;
+  		vertical-align: middle;
+  	}
+  	.send_bt_search{
+  		position: relative;
+  	}
+  	.send_bt_search_textarea{
+  		padding: 10px 12px;
+  		background-color:#87C4DB; 
+  		position: absolute;  
+  		top: 8px;
+  		left: 413px;	
+  		border-radius: 6px;	
+  	}
+  	.send_bt_search_textarea a{
+  		color:#FFF;
+  		text-decoration: none;
+	  	padding-left: 19px;
+  	}
+  	.sendTwitter_2{
+  		  width: 23px;
+		  height: 23px;
+		  position: absolute;
+		  top: 6px;
+		  left: 6px;
+  	}
+  	.num_letter{
+  	  position: relative;
+	  top: 19px;
+	  color: rgb(136, 153, 168);
+	  left: 170px;
+  	}
+</style>
+</head>
+<body>
+<div class="add_bg_color">
+<div class="head">
+	<div class="bird"></div>
+	<div class="leftTitle">
+	<ul>
+		<li class="homePage">
+			<div class="center">
+				<span class="homePage_bg"></span><span class="font_title">主页</span>				
+			</div>
+			<div class="prompt_bottom" style="display: none;"></div>
+		</li>
+		<li class="newsMessage">
+			<div class="center">
+				<span class="newsMessage_bg"></span><span class="font_title">通知</span>
+			</div>
+			<div class="prompt_bottom" style="display: none;"></div>
+		</li>
+		<li class="privateMessage">
+			<div class="center">
+				<span class="privateMessage_bg"></span><span class="font_title">私信</span>
+			</div>
+			<div class="prompt_bottom" style="display: none;"></div>
+		</li>
+		<li class="discovery">
+			<div class="center">
+				<span class="discovery_bg"></span><span class="font_title">发现</span>
+			</div>
+			<div class="prompt_bottom" style="display: none;">				
+			</div>
+		</li>
+	</ul>
+	</div>
+	<div class="rightTitle">
+		<form>
+				<input type="text" class="search" placeholder="搜索 Twitter">
+				<span><img src="./selft_page_files/searchTwitter.PNG" class="search_Icon"></span>	
+		</form>		
+		<ul class="head_right_title">
+			<li class="self_account"><img src="./selft_page_files/self_message.png" title="个人资料与账号"></li>
+			<li class="twitter"><span><img class="sendTwitter" src="./selft_page_files/search.PNG"></span><a href="./selft_page_files/selft_page.html">发推</a></li>
+
+		</ul>
+		<div class="self_introductory">
+		<span><img class="lists_triangle" src="./selft_page_files/triangle.PNG"></span>
+			<ul>
+				<li class="self_message_lists">
+					<p>XXXabv</p>
+					<p>个人资料</p>
+				</li>
+				<li class="self_message_lists_divided_line"></li>
+				<li class="self_message_lists">
+					<p>列表</p>
+				</li>
+				<li class="self_message_lists_divided_line"></li>
+				<li class="self_message_lists">
+					<p>帮助</p>
+					<p>键盘快捷键</p>
+				</li>
+				<li class="self_message_lists_divided_line"></li>
+				<li class="self_message_lists">
+					<p>设置</p>
+					<p>Log out</p>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class=""></div>
+</div>
+	<div class="content">
+		<div class="content_right">
+			<ul>
+				<li>
+					<div class="content_right_up">
+						
+					</div>
+					<div class="add_Portrait">
+						<a href="./selft_page_files/selft_page.html" title="添加头像"><img src="./selft_page_files/camera.png" class="add_Portrait_pic"></a>
+					</div>
+					<div class="content_right_down">
+						<div class="account_individual">
+						<a href="./selft_page_files/selft_page.html" class="account">Jimmy0223</a>
+						<a href="./selft_page_files/selft_page.html" class="at">@jimmy0223</a>
+					</div>
+					<ul class="account_detail">
+						<li>
+							<span class="account_detail_1">推文</span>
+							<span class="account_detail_2">0</span>
+						</li>
+						<li>
+							<span class="account_detail_1">正在关注</span>
+							<span class="account_detail_2">66</span>
+						</li>
+						<li>
+							<span class="account_detail_1">关注者</span>
+							<span class="account_detail_2">1</span>
+						</li>
+					</ul>
+					</div>
+				</li>
+				<li>
+					<div class="content_right_bottom">
+							<p><span class="content_right_bottom_trend">趋势·</span><a href="./selft_page_files/selft_page.html">更改</a></p>
+						<ul>					
+							<li><a href="./selft_page_files/selft_page.html">what does fox say</a></li>
+							<li><a href="./selft_page_files/selft_page.html">Maroon 5</a></li>
+							<li><a href="./selft_page_files/selft_page.html">Taylor Swift</a></li>
+							<li><a href="./selft_page_files/selft_page.html">Justin Bibber</a></li>
+							<li><a href="./selft_page_files/selft_page.html">Jennis</a></li>
+							<li><a href="./selft_page_files/selft_page.html">Go to jail</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+			
+			</div>
+		<div class="content_middle">
+			<div class="content_middle_search">
+				<div class="content_middle_search_form">
+					<img src="./selft_page_files/self_message.png" class="content_middle_search_Icon">
+					<form class="content_middle_search_form_1" style="display: none;">
+						<input type="text" placeholder="有神马新鲜事？" class="content_middle_search_form_text">
+						<img src="./selft_page_files/blurCamera.png" class="content_middle_search_Icon_camera">
+					</form>
+					<form class="content_middle_search_form_2" style="display: block;">
+						<textarea class="content_middle_search_form_textarea"></textarea>
+						<div class="content_middle_search_form_additional">
+							<ul id="addtional_fn">
+								<li class="active_bt"><img src="./selft_page_files/blurCamera.png" id="addPic">添加照片</li>
+								<li class="prohibition_bt"><img src="./selft_page_files/location.png" class="prohibition">禁用位置</li>
+							</ul>
+							<div class="send_bt_search">
+								<span class="num_letter">140</span>
+								<div class="send_bt_search_textarea">
+									<span><img class="sendTwitter_2" src="./selft_page_files/search.PNG"></span><a href="./selft_page_files/selft_page.html">发推</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+	$(function(){	
+		$(".prompt_bottom").hide();
+			$("ul>li").hover(function(){			
+			var $bottom_part = $(this).find(".prompt_bottom");
+			$bottom_part.show();
+			if(!$bottom_part.is(":animated"))
+			$bottom_part.animate({
+				top:"-16px"
+			},100);
+		
+		},function(){
+			$(this).find(".prompt_bottom").animate({
+				top:"-11px"
+			},100);		
+		})	
+		$(".homePage").hover(function(){
+			var $anchor = $(".homePage_bg");
+			
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".homePage_bg");
+			
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".newsMessage").hover(function(){
+			var $anchor = $(".newsMessage_bg");
+			
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".newsMessage_bg");			
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".privateMessage").hover(function(){
+			var $anchor = $(".privateMessage_bg");
+			$anchor.css({
+				
+			});
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".privateMessage_bg");
+			$anchor.css({
+				background:"url('images/privateMessage.jpg') 1px -1px no-repeat"	
+			});
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".discovery").hover(function(){
+			var $anchor = $(".discovery_bg");
+			$anchor.siblings().css({
+				color:"#0084B4"
+			})
+		},function(){
+			var $anchor = $(".discovery_bg");
+			$anchor.siblings().css({
+				color:"#66757F"
+			})
+		});
+		$(".self_account").toggle(function(){
+			$(".self_introductory").show();
+		},function(){
+			$(".self_introductory").hide();
+		})
+		$(".content_middle_search_form_1").click(function(){
+			$(this).hide();
+			$(".content_middle_search_form_2").show();
+			$(".content_middle_search_form_textarea").focus();
+		});
+		$(".content_middle_search_form_textarea").blur(function(){
+			if($(this).val().length>0);
+			else
+			{				
+				$(".content_middle_search_form_2").hide();
+				$(".content_middle_search_form_1").show();
+			}
+		});
+		$(".content_middle_search_form_textarea").keyup(function(){
+			$(".num_letter").text()=140-$(this).val().length;
+		})
+	})
+		
+</script>
+</body></html>
